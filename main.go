@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"github.com/go-vgo/robotgo"
 	"log"
 	"os/exec"
@@ -13,12 +12,12 @@ var  (
 	scroll = 0
 	cx = 79
 	cy = 670
-	path = "D:\\Trojan-Qt5-Windows\\trojan-qt5.exe"
+	path = "D:\\Trojan-Qt5-Windows.1.4.0\\trojan-qt5.exe"
 )
 
 func init()  {
 	// 初始化参数
-	_path := *flag.String("path", "D:\\Trojan-Qt5-Windows\\trojan-qt5.exe", "trojan-qt5.exe的绝对路径")
+	_path := *flag.String("path", path, "trojan-qt5.exe的绝对路径")
 	_scroll := *flag.String("scroll", "0", "鼠标X轴方向向下滚动的值，按需设置")
 	_cx := *flag.String("cx", "79", "连接节点的X轴坐标")
 	_cy := *flag.String("cy", "670", "连接节点的Y轴坐标")
@@ -39,7 +38,7 @@ func main() {
 	//exec.Command("cmd", "/c", "start", "www.baidu.com").()
 	log.Println("启动 trojan-qt5 ")
 	// -windowstyle Maximized
-	runErr := exec.Command("cmd", "/c", "start", "D:\\Trojan-Qt5-Windows\\trojan-qt5.exe").Run()
+	runErr := exec.Command("cmd", "/c", "start", path).Run()
 	if runErr != nil {
 		panic("启动 trojan-qt5 失败 " + runErr.Error())
 	}
@@ -47,23 +46,14 @@ func main() {
 	//等待
 	robotgo.MilliSleep(3 * 1000)
 
-	// trojan-qt5
-	//fpid, err := robotgo.FindIds("trojan-qt5")
-	//log.Println("fpid, err",fpid, err)
-
-	title := robotgo.GetTitle()
-	fmt.Println("title-----", title)
-
 	// get current Window Active
 	mdata := robotgo.GetActive()
 	// set Window Active
 	robotgo.SetActive(mdata)
 
-	robotgo.MilliSleep(1 * 1000)
 	// 全屏
-	x := robotgo.KeyTap(`x`,`alt`, `space`)
-	y := robotgo.KeyTap(`esc`, `ctrl`, `shift`)
-	fmt.Println("x-----", x,y)
+	robotgo.KeyTap(`space`,`alt`)
+	robotgo.KeyTap(`x`)
 
 	// 获取鼠标初始坐标
 	ix, iy := robotgo.GetMousePos()
@@ -82,7 +72,7 @@ func main() {
 	log.Println("连接节点",cx, cy)
 
 	// close current Window
-	//robotgo.CloseWindow()
+	robotgo.CloseWindow()
 	log.Println("关闭 trojan-qt5 主页面")
 
 	// 鼠标回归初始位置

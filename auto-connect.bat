@@ -1,0 +1,1 @@
+D:\Trojan-Qt5-Windows.1.4.0\trojan-qt5-auto-connect_windows_amd64.exe -path D:\\Trojan-Qt5-Windows.1.4.0\\trojan-qt5.exe -cx 79 -cy 670
