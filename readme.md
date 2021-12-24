@@ -1,4 +1,4 @@
-## trojan-qt5-auto-connect 启动 trojan-qt5 自动连接指定节点
+## trojan-qt5-auto-connect 启动 trojan-qt5 自动连接指定节点(鸡肋 2021-12-24 更新)
 > 使用 `robotgo` 模拟鼠标键盘的操作，使得 trojan-qt5 在启动时自动连接指定节点
 
 ## 使用
